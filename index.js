@@ -4,7 +4,7 @@ import socketIO from 'socket.io'
 import xssFilters from 'xss-filters'
 
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 const io = socketIO.listen(app.listen(port));
 
 app.use(express.static(path.join(__dirname, 'public')));
