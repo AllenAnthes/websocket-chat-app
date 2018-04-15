@@ -1,0 +1,19 @@
+extends layout
+block content
+    div.container
+        br
+        div.jumbotron
+            h1.display-4 Real Time Chatting
+            h4 Keep it clean.  This aint Omegle
+            div#chatWindow(style='min-width: 250px; min-height: 150px; max-height: 300px; margin: 0 0 20px 0;border: solid 1px #999; overflow-y: scroll;')
+            br
+            form.needs-validation(id='input-form', novalidate)
+                div.form-group
+                    label(for='username') Username
+                    input#username(class='form-control', placeholder='username', type='text', style=("max-width: 150px;") required)
+                    div.invalid-feedback Username is required
+
+                div.form-group
+                    label(for='message') Message
+                    input#message(class='form-control', placeholder='Message', required)
+                button#send(class='btn btn-primary', type="submit") Send

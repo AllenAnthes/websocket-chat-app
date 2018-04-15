@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        title= "Real time web chat"
+        link(rel="shortcut icon", href="/favicon.ico")
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css')
+        script(src='/chat.js')
+        script(src='/socket.io/socket.io.js')
+
+    body
+        block content
+    footer
+        script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
