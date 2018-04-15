@@ -17,9 +17,17 @@ app.get("/", (req, res) => {
 
 let numUsers = 0;
 
+/**
+ * Listener handling most of our application logic.
+ *
+ * Keeps track of connected users, listens for incoming
+ * chat messages, sanitizes those messages, and broadcasts
+ * the sanitized result back to the clients
+ *
+ */
 io.sockets.on('connection', (socket) => {
     numUsers++;
-    console.log("Connection.");
+    console.log(`New connection. Users: ${numUsers}`);
     socket.emit('message', {message: 'Talk to people!  Hit enter or click send!'});
     io.sockets.emit('message', {
         message: `A new user just joined! There ${numUsers > 1 ? 'are' : 'is' }
@@ -38,12 +46,12 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('disconnect', () => {
         numUsers--;
-        console.log('disconnected');
+        console.log(`User disconnected. Users: ${numUsers}`);
         io.sockets.emit('message', {
             message: `A user has disconnected. There ${numUsers > 1 ? 'are' : 'is' }
                         now ${numUsers} user${numUsers > 1 ? 's' : ''} online.`
         })
     });
-
-    console.log("Listening on port " + port);
 });
+
+console.log("Listening on port " + port);
